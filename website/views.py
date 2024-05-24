@@ -16,15 +16,7 @@ def elements_view(request):
 
 
 def contact_view(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'We Received Your Massage')
-        else:
-            messages.error(request, 'An error occurred')
-    form = ContactForm()
-    return render(request, 'website/contact.html', {'form': form})
+    return render(request, 'website/contact.html')
 
 
 def newsletter_view(request):
