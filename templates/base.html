@@ -57,19 +57,19 @@
                       <a href="{% url 'website:index' %}" class="icon-h fas fa-house-damage"></a>
                     </li>
                     <li data-tooltip="درباره" data-position="top">
-                      <a href="http://127.0.0.1:8000/#about" class="icon-a fas fa-user-tie"></a>
+                      <a href="{% url 'website:index' %}#about" class="icon-a fas fa-user-tie"></a>
                     </li>
                     <li data-tooltip="رزومه" data-position="top">
-                      <a href="http://127.0.0.1:8000/#resume" class="icon-r fas fa-address-book"></a>
+                      <a href="{% url 'website:index' %}#resume" class="icon-r fas fa-address-book"></a>
                     </li>
                     <li data-tooltip="نمونه‌کارها" data-position="top">
-                      <a href="http://127.0.0.1:8000/#portfolio" class="icon-p fas fa-briefcase"></a>
+                      <a href="{% url 'website:index' %}#portfolio" class="icon-p fas fa-briefcase"></a>
                     </li>
                     <li data-tooltip="بلاگ" data-position="top">
                       <a href="{% url 'blog:index' %}" class="icon-b fas fa-receipt"></a>
                     </li>
                     <li data-tooltip="تماس" data-position="bottom">
-                      <a href="http://127.0.0.1:8000/#contact" class="icon-c fas fa-envelope"></a>
+                      <a href="{% url 'website:index' %}#contact" class="icon-c fas fa-envelope"></a>
                     </li>
                   </ul>
 
