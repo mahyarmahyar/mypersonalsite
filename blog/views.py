@@ -57,21 +57,21 @@ def blog_single(request, pid):
             comment.post = post
             comment.save()
             messages.success(request, 'پیام شما با موفقیت ثبت شد')
-            # Redirect after POST
             return HttpResponseRedirect(request.path_info)
         else:
+            # چاپ خطاهای فرم برای دیباگ
+            print(form.errors)
             messages.error(request, 'خطایی رخ داده است')
-            # Redirect after failed POST
             return HttpResponseRedirect(request.path_info)
     else:
         form = CommentForm()
         post.counted_views += 1
         post.save()
 
-        next_post = Post.objects.filter(status=1, published_date__gt=post.published_date,
-                                        published_date__lte=timezone.now()).order_by('published_date').first()
-        prev_post = Post.objects.filter(status=1, published_date__lt=post.published_date,
-                                        published_date__lte=timezone.now()).order_by('-published_date').first()
+        next_post = Post.objects.filter(
+            status=1, published_date__gt=post.published_date).order_by('published_date').first()
+        prev_post = Post.objects.filter(
+            status=1, published_date__lt=post.published_date).order_by('-published_date').first()
 
         comments = Comment.objects.filter(post=post.id, approach=True)
         context = {

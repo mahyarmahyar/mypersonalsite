@@ -1,0 +1,8 @@
+<form class="search" action="{% url 'blog:search' %}" method="get">
+  <div class="input-group">
+    <div class="input-group-text">
+      <i class="fas fa-search"></i>
+    </div>
+    <input type="text" class="form-control" placeholder="جستجو ..." name="s" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" />
+  </div>
+</form>

@@ -223,10 +223,10 @@
                     <div class="lang">
                       <ul>
                         <li>
-                          <a href="#" class="active">فارسی</a>
+                          <a href="{%url 'accounts:login' %}" class="active">ورود</a>
                         </li>
                         <li>
-                          <a href="#">انگلیسی</a>
+                          <a href="{%url 'accounts:signup' %}">عضویت</a>
                         </li>
                       </ul>
                     </div>
@@ -1037,156 +1037,86 @@
                     </div>
                   </section>
                 </div>
-                <!-- Blog Section -->
-                <div class="page pt-blog" data-simplebar>
+                <!-- Contact Section -->
+                <div class="page pt-contact" data-simplebar>
                   <section class="container">
                     <!-- Section Title -->
                     <div class="header-page mt-70 mob-mt">
-                      <h2>بلاگ</h2>
+                      <h2>تماس</h2>
                       <span></span>
                     </div>
 
-                    <!-- Blog Row Start -->
-                    <div class="row blog-masonry mt-100 mb-50">
-                      <!-- Blog Item -->
-                      <div class="col-lg-4 col-sm-6">
-                        <div class="blog-item">
-                          <div class="thumbnail">
-                            <a href="blog-single.html"><img alt="" src="{% static 'img/blog/img-1.jpg' %}" /></a>
-                          </div>
-                          <h4><a href="blog-single.html">راه موفقیت</a></h4>
-                          <ul>
-                            <li>
-                              <a href="#">15 اسفند 1398</a>
-                            </li>
-                            <li>
-                              <a href="#">سبک زندگی</a>
-                            </li>
-                          </ul>
-                          <div class="blog-btn">
-                            <a href="blog-single.html" class="btn-st">بیشتر بخوانید</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Blog Item -->
-                      <div class="col-lg-4 col-sm-6">
-                        <div class="blog-item">
-                          <div class="thumbnail">
-                            <a href="blog-single.html"><img alt="" src="{% static 'img/blog/img-2.jpg' %}" /></a>
-                            <a href="video/video-iframe.html" class="btn-play"></a>
-                          </div>
-                          <h4><a href="blog-single.html">راه موفقیت</a></h4>
-                          <ul>
-                            <li>
-                              <a href="#">10 اسفند 1398</a>
-                            </li>
-                            <li>
-                              <a href="#">سبک زندگی</a>
-                            </li>
-                          </ul>
-                          <div class="blog-btn">
-                            <a href="blog-single.html" class="btn-st">بیشتر بخوانید</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Blog Item -->
-                      <div class="col-lg-4 col-sm-6">
-                        <div class="blog-item">
-                          <div class="thumbnail">
-                            <a href="blog-single.html"><img alt="" src="{% static 'img/blog/img-3.jpg' %}" /></a>
-                          </div>
-                          <h4><a href="blog-single.html">راه موفقیت</a></h4>
-                          <ul>
-                            <li>
-                              <a href="#">2 اسفند 1398</a>
-                            </li>
-                            <li>
-                              <a href="#">کار</a>
-                            </li>
-                          </ul>
-                          <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه</p>
-                          <div class="blog-btn">
-                            <a href="blog-single.html" class="btn-st">بیشتر بخوانید</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Blog Item -->
-                      <div class="col-lg-4 col-sm-6">
-                        <div class="blog-item">
-                          <div class="thumbnail">
-                            <a href="blog-single.html"><img alt="" src="{% static 'img/blog/img-4.jpg' %}" /></a>
-                          </div>
-                          <h4><a href="blog-single.html">راه موفقیت</a></h4>
-                          <ul>
-                            <li>
-                              <a href="#">29 بهمن 1398</a>
-                            </li>
-                            <li>
-                              <a href="#">حرفه</a>
-                            </li>
-                          </ul>
-                          <div class="blog-btn">
-                            <a href="blog-single.html" class="btn-st">بیشتر بخوانید</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Blog Item -->
-                      <div class="col-lg-4 col-sm-6">
-                        <div class="blog-item">
-                          <div class="thumbnail">
-                            <a href="blog-single.html"><img alt="" src="{% static 'img/blog/img-5.jpg' %}" /></a>
-                          </div>
-                          <h4><a href="blog-single.html">راه موفقیت</a></h4>
-                          <ul>
-                            <li>
-                              <a href="#">14 بهمن 1398</a>
-                            </li>
-                            <li>
-                              <a href="#">سبک زندگی</a>
-                            </li>
-                          </ul>
-                          <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه</p>
-                          <div class="blog-btn">
-                            <a href="blog-single.html" class="btn-st">بیشتر بخوانید</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Blog Item -->
-                      <div class="col-lg-4 col-sm-6">
-                        <div class="blog-item">
-                          <div class="thumbnail">
-                            <a href="blog-single.html"><img alt="" src="{% static 'img/blog/img-6.jpg' %}" /></a>
-                            <a href="video/video-iframe.html" class="btn-play"></a>
-                          </div>
-                          <h4><a href="blog-single.html">راه موفقیت</a></h4>
-                          <ul>
-                            <li>
-                              <a href="#">29 دی 1398</a>
-                            </li>
-                            <li>
-                              <a href="#">حرفه</a>
-                            </li>
-                          </ul>
-                          <div class="blog-btn">
-                            <a href="blog-single.html" class="btn-st">بیشتر بخوانید</a>
-                          </div>
+                    <!-- Form Start -->
+                    <div class="row mt-100">
+                      <div class="col-lg-12 col-sm-12">
+                        <div class="contact-form">
+                          <form method="post" class="box-1 contact-valid" id="contact-form">
+                            <div class="row">
+                              <div class="col-lg-6 col-sm-12">
+                                <input type="text" name="name" id="name" class="form-control" placeholder="نام *" />
+                              </div>
+                              <div class="col-lg-6 col-sm-12 mt-3 mt-lg-0">
+                                <input type="email" name="email" id="email" class="form-control" placeholder="* ایمیل" dir="ltr" />
+                              </div>
+                              <div class="col-lg-12 col-sm-12">
+                                <textarea class="form-control" name="note" id="note" placeholder="پیام شما"></textarea>
+                              </div>
+                              <div class="col-lg-12 col-sm-12 text-center">
+                                <button type="submit" class="btn-st">ارسال پیام</button>
+                                <div id="loader">
+                                  <i class="fas fa-sync"></i>
+                                </div>
+                              </div>
+                              <div class="col-lg-12 col-sm-12">
+                                <div class="error-messages">
+                                  <div id="success">
+                                    <i class="far fa-check-circle"></i>متشکریم، پیام شما ارسال شد.
+                                  </div>
+                                  <div id="error">
+                                    <i class="far fa-times-circle"></i>خطایی در هنگام ارسال ایمیل رخ داد. لطفا مجدد تلاش کنید.
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
                         </div>
                       </div>
                     </div>
 
-                    <div class="row mt-60 mb-90">
-                      <div class="col-lg-12 col-sm-12 text-center">
-                        <a href="blog-list.html" class="btn-st">مشاهده همه مطالب بلاگ</a>
+                    <!-- Contact Info -->
+                    <div class="box-2 contact-info">
+                      <div class="row">
+                        <div class="col-lg-4 col-sm-12 info">
+                          <i class="fas fa-paper-plane"></i>
+                          <p>info@mahyar-heydari.com</p>
+                          <span>ایمیل</span>
+                        </div>
+                        <div class="col-lg-4 col-sm-12 info">
+                          <i class="fas fa-map-marker-alt"></i>
+                          <p>تهران، ----</p>
+                          <span>آدرس</span>
+                        </div>
+                        <div class="col-lg-4 col-sm-12 info">
+                          <i class="fas fa-phone"></i>
+                          <p>
+                            <span class="ltr-text">(+98) 912 --- ----</span>
+                          </p>
+                          <span>تلفن</span>
+                        </div>
                       </div>
                     </div>
+
+                    <!-- Google Map Start
+                    <div class="google-map box-1 mt-100 mb-100">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div id="map" data-latitude="40.712775" data-longitude="-74.005973" data-zoom="14"></div>
+                        </div>
+                      </div>
+                    </div>
+                    -->
                   </section>
                 </div>
-
                 <!-- Contact Section -->
                 <div class="page pt-contact" data-simplebar>
                   <section class="container">

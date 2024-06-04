@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load blog_tags %}
 {% block content %}
   {% load jformat %}
   <html lang="fa" dir="rtl">
@@ -42,11 +43,16 @@
                       </div>
                       <div class="detalis">
                         <ul class="meta">
+                          {% for category in post.category.all %}
+                            <li>
+                              <i class="fa fa-list"></i><a href="{% url 'blog:category' category_name=category.name %}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
+                            </li>
+                          {% endfor %}
                           <li>
-                            <i class="fa fa-calendar"></i>{{ post.published_date|jformat:'%d %B %Y' }}
+                            <i class="fa fa-calendar"></i>{{ post.published_date|jformat:'%d %m %Y' }}
                           </li>
                           <li>
-                            <i class="icon fa fa-user"></i>{{ post.author.username }}
+                            <i class="icon fa fa-user"></i><a href="{% url 'blog:author' author_username=post.author %}">{{ post.author.username }}</a>
                           </li>
                         </ul>
                         <h4><a href="{% url 'blog:single' post.id %}">{{ post.title }}</a></h4>
@@ -57,156 +63,49 @@
                   </div>
                 {% endfor %}
 
-                <!-- Blog Post -->
-                <div class="blog-post">
-                  <div class="content">
-                    <div class="thumbnail">
-                      <a href="blog-single.html"><img src="{% static 'img/blog/post/blog-2.jpg' %}" alt="" /></a>
-                    </div>
-                    <div class="detalis">
-                      <ul class="meta">
-                        <li>
-                          <i class="fa fa-calendar"></i>23 اسفند 1398
-                        </li>
-                        <li>
-                          <i class="icon fa fa-user"></i>جان اسنو
-                        </li>
-                      </ul>
-                      <h4><a href="blog-single.html">لورم ایپسوم متن ساختگی</a></h4>
-                      <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد</div>
-                      <a href="blog-single.html" class="btn-st">مشاهده بیشتر</a>
-                    </div>
-                  </div>
-                </div>
-
-                <!--                 Blog Post<div class="blog-post">
-                  <div class="content">
-                    <div class="thumbnail">
-                      <a href="blog-single.html"><img src="{% static 'img/blog/post/blog-3.jpg' %}" alt="" /></a>
-                    </div>
-                    <div class="detalis">
-                      <ul class="meta">
-                        <li>
-                          <i class="fa fa-calendar"></i>19 بهمن 1398
-                        </li>
-                        <li>
-                          <i class="icon fa fa-user"></i>جان اسنو
-                        </li>
-                      </ul>
-                      <h4><a href="blog-single.html">لورم ایپسوم متن</a></h4>
-                      <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال</div>
-                      <a href="blog-single.html" class="btn-st">مشاهده بیشتر</a>
-                    </div>
-                  </div>
-                </div>               -->
-
-                <!--                 Blog Post 
-                <div class="blog-post">
-                  <div class="content">
-                    <div class="thumbnail">
-                      <a href="blog-single.html"><img src="{% static 'img/blog/post/blog-4.jpg' %}" alt="" /></a>
-                    </div>
-                    <div class="detalis">
-                      <ul class="meta">
-                        <li>
-                          <i class="fa fa-calendar"></i>14 بهمن 1398
-                        </li>
-                        <li>
-                          <i class="icon fa fa-user"></i>جان اسنو
-                        </li>
-                      </ul>
-                      <h4><a href="blog-single.html">لورم ایپسوم متن ساختگی</a></h4>
-                      <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه</div>
-                      <a href="blog-single.html" class="btn-st">مشاهده بیشتر</a>
-                    </div>
-                  </div>
-                </div>                -->
-
                 <!-- Pagination Blog -->
-                <ul class="pagination">
-                  <li>
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </li>
-                  <li>
-                    <a href="#">1</a>
-                  </li>
-                  <li class="active">
-                    <a href="#">2</a>
-                  </li>
-                  <li>
-                    <a href="#">3</a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-angle-left"></i></a>
-                  </li>
-                </ul>
+                {% if page_obj.paginator.num_pages > 1 %}
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a href="?page=1{% if category_name %}{{ category_name }}{% endif %}{% if author_username %}{{ author_username }}{% endif %}" aria-label="First"><span aria-hidden="true"><span class="fa fa-angle-right"></span></span></a>
+                    </li>
+                    <li class="page-item {% if page_obj.number == 1 %}{% endif %}">
+                      <a href="?page=1{% if category_name %}{{ category_name }}{% endif %}{% if author_username %}{{ author_username }}{% endif %}">1</a>
+                    </li>
+                    {% for num in page_obj.paginator.page_range %}
+                      {% if num > 1 and num < page_obj.paginator.num_pages %}
+                        <li class="page-item {% if num == page_obj.number %}{% endif %}">
+                          <a href="?page={{ num }}{% if category_name %}{{ category_name }}{% endif %}{% if author_username %}{{ author_username }}{% endif %}">{{ num }}</a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                    <li class="page-item {% if page_obj.number == page_obj.paginator.num_pages %}{% endif %}">
+                      <a href="?page={{ page_obj.paginator.num_pages }}{% if category_name %}{{ category_name }}{% endif %}{% if author_username %}{{ author_username }}{% endif %}">{{ page_obj.paginator.num_pages }}</a>
+                    </li>
+                    <li class="page-item">
+                      <a href="?page={{ page_obj.paginator.num_pages }}{% if category_name %}{{ category_name }}{% endif %}{% if author_username %}{{ author_username }}{% endif %}" aria-label="Last"><span aria-hidden="true"><span class="fa fa-angle-left"></span></span></a>
+                    </li>
+                  </ul>
+                {% endif %}
               </div>
 
               <div class="col-md-4">
                 <div class="side-left">
                   <!-- Search -->
-                  <form class="search" action="#">
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        <i class="fas fa-search"></i>
-                      </div>
-                      <input type="text" class="form-control" placeholder="جستجو ..." />
-                    </div>
-                  </form>
-
+                  {% search %}
                   <!-- Categories -->
                   <div class="categories">
                     <h4>دسته‌بندی ها</h4>
                     <ul>
-                      <li>
-                        <a href="#">مشاوره</a>
-                      </li>
-                      <li>
-                        <a href="#">سبک زندگی</a>
-                      </li>
-                      <li>
-                        <a href="#">تکنولوژی</a>
-                      </li>
+                      {% postcategories %}
                     </ul>
                   </div>
 
                   <!-- Recent News -->
                   <div class="news">
-                    <h4>اخبار جدید</h4>
+                    <h4>اخرین مطالب</h4>
                     <ul>
-                      <li>
-                        <div class="mess-img">
-                          <img src="{% static 'img/blog/post/blog-4.jpg' %}" alt="" />
-                        </div>
-                        <div class="mess-info">
-                          <h5><a href="#">لورم ایپسوم متن ساختگی</a></h5>
-                          <p>
-                            <i class="fa fa-calendar"></i>23 اسفند 1398
-                          </p>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="mess-img">
-                          <img src="{% static 'img/blog/post/blog-3.jpg' %}" alt="" />
-                        </div>
-                        <div class="mess-info">
-                          <h5><a href="#">لورم ایپسوم متن</a></h5>
-                          <p>
-                            <i class="fa fa-calendar"></i>14 بهمن 1398
-                          </p>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="mess-img">
-                          <img src="{% static 'img/blog/post/blog-2.jpg' %}" alt="" />
-                        </div>
-                        <div class="mess-info">
-                          <h5><a href="#">لورم ایپسوم متن ساختگی</a></h5>
-                          <p>
-                            <i class="fa fa-calendar"></i>19 بهمن 1398
-                          </p>
-                        </div>
-                      </li>
+                      {% latestposts %}
                     </ul>
                   </div>
 
