@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+  {% load jformat %}
   <html lang="fa" dir="rtl">
     <body>
       <!-- Preloader -->
@@ -33,26 +34,28 @@
             <div class="row">
               <div class="col-md-8">
                 <!-- Blog Post -->
-                <div class="blog-post">
-                  <div class="content">
-                    <div class="thumbnail">
-                      <a href="{% url 'blog:single' %}"><img src="{% static 'img/blog/post/blog-1.jpg' %}" alt="" /></a>
-                    </div>
-                    <div class="detalis">
-                      <ul class="meta">
-                        <li>
-                          <i class="fa fa-calendar"></i>27 اسفند 1398
-                        </li>
-                        <li>
-                          <i class="icon fa fa-user"></i>جان اسنو
-                        </li>
-                      </ul>
-                      <h4><a href="blog-single.html">لورم ایپسوم متن</a></h4>
-                      <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و</div>
-                      <a href="{% url 'blog:single' %}" class="btn-st">مشاهده بیشتر</a>
+                {% for post in posts %}
+                  <div class="blog-post">
+                    <div class="content">
+                      <div class="thumbnail">
+                        <a href=""><img src="{{ post.image.url }}" alt="{{ post.title }}" /></a>
+                      </div>
+                      <div class="detalis">
+                        <ul class="meta">
+                          <li>
+                            <i class="fa fa-calendar"></i>{{ post.published_date|jformat:'%d %B %Y' }}
+                          </li>
+                          <li>
+                            <i class="icon fa fa-user"></i>{{ post.author.username }}
+                          </li>
+                        </ul>
+                        <h4><a href="{% url 'blog:single' post.id %}">{{ post.title }}</a></h4>
+                        <div class="text">{{ post.content|truncatewords:15|safe }}</div>
+                        <a href="{% url 'blog:single' post.id %}" class="btn-st">مشاهده بیشتر</a>
+                      </div>
                     </div>
                   </div>
-                </div>
+                {% endfor %}
 
                 <!-- Blog Post -->
                 <div class="blog-post">
@@ -76,8 +79,7 @@
                   </div>
                 </div>
 
-                <!-- Blog Post -->
-                <div class="blog-post">
+                <!--                 Blog Post<div class="blog-post">
                   <div class="content">
                     <div class="thumbnail">
                       <a href="blog-single.html"><img src="{% static 'img/blog/post/blog-3.jpg' %}" alt="" /></a>
@@ -96,9 +98,9 @@
                       <a href="blog-single.html" class="btn-st">مشاهده بیشتر</a>
                     </div>
                   </div>
-                </div>
+                </div>               -->
 
-                <!-- Blog Post -->
+                <!--                 Blog Post 
                 <div class="blog-post">
                   <div class="content">
                     <div class="thumbnail">
@@ -118,7 +120,7 @@
                       <a href="blog-single.html" class="btn-st">مشاهده بیشتر</a>
                     </div>
                   </div>
-                </div>
+                </div>                -->
 
                 <!-- Pagination Blog -->
                 <ul class="pagination">
