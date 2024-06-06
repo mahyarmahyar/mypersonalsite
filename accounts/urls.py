@@ -16,4 +16,6 @@ urlpatterns = [
         template_name='accounts/password_reset_complete.html'), name='password_reset_complete'),
     path('reset_password_invalid/', views.reset_password_invalid,
          name='reset_password_invalid'),
+    # اینجا مسیر صفحه خوش‌آمدگویی اضافه شده است
+    path('welcome/', views.welcome_view, name='welcome'),
 ]

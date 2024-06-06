@@ -222,12 +222,21 @@
                     <!-- Language -->
                     <div class="lang">
                       <ul>
+                        {% if request.user.is_authenticated %}
+                        <li>
+                          <a href="#">{{request.user.username}} خوش آمدید</a>
+                        </li>
+                        <li>
+                          <a href="{%url 'accounts:logout' %}">خروج</a>
+                        </li>
+                        {% else %}
                         <li>
                           <a href="{%url 'accounts:login' %}" class="active">ورود</a>
                         </li>
                         <li>
                           <a href="{%url 'accounts:signup' %}">عضویت</a>
                         </li>
+                        {% endif%}
                       </ul>
                     </div>
 

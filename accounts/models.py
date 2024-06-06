@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 
 class LoginForm(forms.Form):
@@ -48,3 +50,4 @@ class CustomSetPasswordForm(SetPasswordForm):
         if new_password1 and new_password2 and new_password1 != new_password2:
             raise forms.ValidationError("رمزهای عبور جدید مطابقت ندارند")
         return new_password2
+

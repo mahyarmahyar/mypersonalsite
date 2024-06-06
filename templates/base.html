@@ -40,56 +40,53 @@
           <div id="portfolio">
             <div id="blog">
               <div id="contact">
-                <div class="header-mobile">
-                  <a class="header-toggle"><i class="fas fa-bars"></i></a>
-                  <h2>مهیار</h2>
-                </div>
-
-                <!-- Left Block -->
-                <nav class="header-main" data-simplebar>
-                  <!-- Logo -->
-                  <div class="logo">
-                    <img src="{% static 'img/logo1.png' %}" alt="" />
+                <div id="login">
+                  <div class="header-mobile">
+                    <a class="header-toggle"><i class="fas fa-bars"></i></a>
+                    <h2>مهیار</h2>
                   </div>
 
-                  <ul>
-                    <li data-tooltip="خانه" data-position="top">
-                      <a href="{% url 'website:index' %}" class="icon-h fas fa-house-damage"></a>
-                    </li>
-                    <li data-tooltip="درباره" data-position="top">
-                      <a href="{% url 'website:index' %}#about" class="icon-a fas fa-user-tie"></a>
-                    </li>
-                    <li data-tooltip="رزومه" data-position="top">
-                      <a href="{% url 'website:index' %}#resume" class="icon-r fas fa-address-book"></a>
-                    </li>
-                    <li data-tooltip="نمونه‌کارها" data-position="top">
-                      <a href="{% url 'website:index' %}#login" class="icon-e fas fa-sign-in-alt"></a>
-                    </li>
-                    </li>
-                    <li data-tooltip="نمونه‌کارها" data-position="top">
-                      <a href="{% url 'website:index' %}#portfolio" class="icon-p fas fa-briefcase"></a>
-                    </li>
-                    <li data-tooltip="بلاگ" data-position="top">
-                      <a href="{% url 'blog:index' %}" class="icon-b fas fa-receipt"></a>
-                    </li>
-                    <li data-tooltip="تماس" data-position="bottom">
-                      <a href="{% url 'website:index' %}#contact" class="icon-c fas fa-envelope"></a>
-                    </li>
-                  </ul>
-
-                  <!-- Sound wave -->
-                  <a class="music-bg">
-                    <div class="lines">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
+                  <!-- Left Block -->
+                  <nav class="header-main" data-simplebar>
+                    <!-- Logo -->
+                    <div class="logo">
+                      <img src="{% static 'img/logo1.png' %}" alt="" />
                     </div>
-                    <p>صدا</p>
-                  </a>
-                </nav>
+
+                    <ul>
+                      <li data-tooltip="خانه" data-position="top">
+                        <a href="{% url 'website:index' %}" class="icon-h fas fa-house-damage"></a>
+                      </li>
+                      <li data-tooltip="درباره" data-position="top">
+                        <a href="{% url 'website:index' %}#about" class="icon-a fas fa-user-tie"></a>
+                      </li>
+                      <li data-tooltip="رزومه" data-position="top">
+                        <a href="{% url 'website:index' %}#resume" class="icon-r fas fa-address-book"></a>
+                      </li>
+                      <li data-tooltip="نمونه‌کارها" data-position="top">
+                        <a href="{% url 'website:index' %}#portfolio" class="icon-p fas fa-briefcase"></a>
+                      </li>
+                      <li data-tooltip="بلاگ" data-position="top">
+                        <a href="{% url 'blog:index' %}" class="icon-b fas fa-receipt"></a>
+                      </li>
+                      <li data-tooltip="تماس" data-position="bottom">
+                        <a href="{% url 'website:index' %}#contact" class="icon-c fas fa-envelope"></a>
+                      </li>
+                    </ul>
+
+                    <!-- Sound wave -->
+                    <a class="music-bg">
+                      <div class="lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <p>صدا</p>
+                    </a>
+                  </nav>
   </head>
 
   {% block content %}

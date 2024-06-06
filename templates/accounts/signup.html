@@ -1,58 +1,69 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
-    <meta name="generator" content="Jekyll v3.8.5" />
-    <title>Signup</title>
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-      
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{% static 'css/signin.css' %}" />
-  </head>
-  <body class="text-center">
-    <form class="form-signin" method="post" action="{% url 'accounts:signup' %}">
-      {% csrf_token %}
-
-      <img class="mb-4" src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
-      <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
-
-      <label for="inputEmail" class="sr-only">User name</label>
-      <input type="text" name="username" class="form-control" placeholder="username" required />
-      <input type="email" name="email" class="form-control" placeholder="Email" required />
-
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" name="password1" class="form-control" placeholder="password" required />
-
-      <label for="inputPassword" class="sr-only">Confirm Password</label>
-      <input type="password" name="password2" class="form-control" placeholder="Confirm password" required />
-      <div class="checkbox mb-3">
-        <label><input type="checkbox" value="remember-me" />Remember me</label>
+{% load blog_tags %}
+{% block content %}
+  {% load jformat %}
+  <html lang="fa" dir="rtl">
+    <body>
+      <!-- Preloader -->
+      <div id="preloader">
+        <div class="loading-area">
+          <div class="circle"></div>
+        </div>
+        <div class="left-side"></div>
+        <div class="right-side"></div>
       </div>
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
-    </form>
-  </body>
-</html>
+      <div class="header-mobile">
+        <a class="header-toggle"><i class="fas fa-bars"></i></a>
+        <h2>مهیار حیدری</h2>
+      </div>
+
+      <!-- Blog Page -->
+      <div class="blog-list" data-simplebar>
+        <div class="blog-head">
+          <h2>ورود</h2>
+          <ul class="blog-breadcrumb">
+            <li>
+              <a href="{% url 'website:index' %}">خانه</a>
+            </li>
+            <li>ورود</li>
+          </ul>
+        </div>
+        <div class="row blog-list-container">
+          <div class="col-md-10 offset-md-1">
+            <form class="box-1 contact-valid text-center" method="post" action="{% url 'accounts:signup' %}">
+              {% csrf_token %}
+
+              <div class="form-group">
+                <label for="inputUsername" class="form-label">نام کاربری</label>
+                <input type="text" name="username" id="inputUsername" class="form-control" placeholder="نام کاربری" required />
+              </div>
+
+              <div class="form-group">
+                <label for="inputEmail" class="form-label">ایمیل</label>
+                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="ایمیل" required />
+              </div>
+
+              <div class="form-group">
+                <label for="inputPassword1" class="form-label">رمز عبور</label>
+                <input type="password" name="password1" id="inputPassword1" class="form-control" placeholder="رمز عبور" required />
+              </div>
+
+              <div class="form-group">
+                <label for="inputPassword2" class="form-label">تکرار رمز عبور</label>
+                <input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="تکرار رمز عبور" required />
+              </div>
+
+              <div class="form-group form-check mb-3">
+                <!-- Optional: Add checkbox here if needed -->
+              </div>
+
+              <button class="btn btn-primary btn-st" type="submit">عضویت</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
+{% endblock %}

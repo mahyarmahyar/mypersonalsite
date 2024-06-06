@@ -32,7 +32,7 @@ def login_view(request):
                     user = User.objects.get(email=username_or_email)
                     if user and check_password(password, user.password):
                         login(request, user)
-                        return redirect('/')
+                        return redirect('/accounts/welcome')
                 except User.DoesNotExist:
                     pass
             else:
@@ -41,11 +41,11 @@ def login_view(request):
 
                 if user is not None:
                     login(request, user)
-                    return redirect('/')
+                    return redirect('/accounts/welcome')
             form.add_error(None, 'Invalid username or password.')
     else:
         if request.user.is_authenticated:
-            return redirect('/')
+            return redirect('/accounts/welcome')
     return render(request, 'accounts/login.html', {'form': form})
 
 
@@ -61,7 +61,7 @@ def signup_view(request):
             form = CustomUserCreationForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('/')
+                return redirect('/accounts/welcome')
 
         form = CustomUserCreationForm()
         context = {'form': form}
@@ -79,15 +79,10 @@ def forgot_password(request):
             associated_users = User.objects.filter(email=email)
             if associated_users.exists():
                 for user in associated_users:
-                    # Generate a token for password reset
                     uid = urlsafe_base64_encode(force_bytes(user.pk))
                     token = default_token_generator.make_token(user)
-
-                    # Construct the reset password link
-                    reset_url = request.build_absolute_uri(reverse('accounts:reset_password', kwargs={
-                        'uidb64': uid, 'token': token}))
-
-                    # Send reset password email
+                    reset_url = request.build_absolute_uri(
+                        reverse('accounts:reset_password', kwargs={'uidb64': uid, 'token': token}))
                     subject = 'Password Reset'
                     email_content = f"""
                     <html>
@@ -99,15 +94,12 @@ def forgot_password(request):
                     """
                     send_mail(subject, '', 'admin@example.com',
                               [user.email], html_message=email_content)
-
-                # Redirect to the password reset sent page
                 return redirect('accounts:password_reset_done')
             else:
                 messages.error(
                     request, 'No user found with this email address.')
     else:
         form = CustomPasswordResetForm()
-
     return render(request, 'accounts/password_reset_form.html', {'form': form})
 
 
@@ -138,3 +130,7 @@ def reset_password(request, uidb64, token):
 
 def reset_password_invalid(request):
     return render(request, 'accounts/reset_password_invalid.html')
+
+
+def welcome_view(request):
+    return render(request, 'accounts/welcome.html')
