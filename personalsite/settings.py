@@ -15,6 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SITE_ID = 2
 
 # Application definition
 
@@ -25,13 +26,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'website.apps.WebsiteConfig',
+    'django.contrib.sites',
     'blog',
     'django_summernote',
     'django_jalali',
     'taggit',
     'django.contrib.humanize',
     'accounts',
+    'captcha',
+
 
 ]
 
@@ -43,6 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+
 ]
 
 ROOT_URLCONF = 'personalsite.urls'
@@ -118,3 +125,8 @@ EMAIL_USE_SSL = False
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = '_mainaccount@mahyar-heydari.com'
 EMAIL_HOST_PASSWORD = '1?yz?#h1q7WR'
+
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
+CAPTCHA_LENGTH = 6
+CAPTCHA_TIMEOUT = 5  # به دقیقه
+CAPTCHA_OUTPUT_FORMAT = '%(image)s %(hidden_field)s %(text_field)s'

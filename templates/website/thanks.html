@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load blog_tags %}
+{% block content %}
+  {% load jformat %}
+  <html lang="fa" dir="rtl">
+    <body>
+      <!-- Preloader -->
+      <div id="preloader">
+        <div class="loading-area">
+          <div class="circle"></div>
+        </div>
+        <div class="left-side"></div>
+        <div class="right-side"></div>
+      </div>
+
+      <div class="header-mobile">
+        <a class="header-toggle"><i class="fas fa-bars"></i></a>
+        <h2>مهیار حیدری</h2>
+      </div>
+
+      <!-- Blog Page -->
+      <div class="blog-list" data-simplebar>
+        <div class="blog-head">
+          <h2>خوش امدید</h2>
+          <ul class="blog-breadcrumb">
+            <li>
+              <a href="{% url 'website:index' %}">خانه</a>
+            </li>
+            <li>تشکر</li>
+          </ul>
+        </div>
+        <div class="row blog-list-container">
+          <div class="col-md-10 offset-md-1">
+            <title>خوش امدید</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+              }
+              .container {
+                text-align: center;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+              }
+              h1 {
+                color: #333;
+              }
+              p {
+                color: #666;
+              }
+            </style>
+            <div class="container">
+              <h1>با تشکر</h1>
+              <p>با تشکر پیام شما دریافت شد به زودی با شما تماس خواهم گرفت.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
+{% endblock %}

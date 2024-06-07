@@ -115,35 +115,18 @@
                   <!-- Gallery -->
                   <div class="gallery">
                     <h4>گالری</h4>
-                    <ul>
-                      <li>
-                        <img src="{% static 'img/blog/post/gallery/gallery-1.jpg' %}" alt="" />
-                      </li>
-                      <li>
-                        <img src="{% static 'img/blog/post/gallery/gallery-2.jpg' %}" alt="" />
-                      </li>
-                      <li>
-                        <img src="{% static 'img/blog/post/gallery/gallery-3.jpg' %}" alt="" />
-                      </li>
-                      <li>
-                        <img src="{% static 'img/blog/post/gallery/gallery-4.jpg' %}" alt="" />
-                      </li>
-                      <li>
-                        <img src="{% static 'img/blog/post/gallery/gallery-5.jpg' %}" alt="" />
-                      </li>
-                      <li>
-                        <img src="{% static 'img/blog/post/gallery/gallery-6.jpg' %}" alt="" />
-                      </li>
-                      <li>
-                        <img src="{% static 'img/blog/post/gallery/gallery-7.jpg' %}" alt="" />
-                      </li>
-                      <li>
-                        <img src="{% static 'img/blog/post/gallery/gallery-8.jpg' %}" alt="" />
-                      </li>
-                    </ul>
+                    <div class="row">
+                      {% for post in posts %}
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                          <div class="gallery-item">
+                            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid gallery-image" />
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
                   </div>
 
-                  <!--   Archives
+                  <!--                     Archives
                   <div class="archives">
                     <h4>بایگانی</h4>
                     <ul>
@@ -158,33 +141,17 @@
                       </li>
                     </ul>
                   </div>
-                     -->
+                                       -->
 
-                  <!--  Tags 
+                  <!-- Tags -->
                   <div class="tags">
                     <h4>برچسب ها</h4>
                     <ul>
                       <li>
-                        <a href="#">سفارش</a>
-                      </li>
-                      <li>
-                        <a href="#">کسب و کار</a>
-                      </li>
-                      <li>
-                        <a href="#">فضای ابری</a>
-                      </li>
-                      <li>
-                        <a href="#">هاستینگ</a>
-                      </li>
-                      <li>
-                        <a href="#">زندگی</a>
-                      </li>
-                      <li>
-                        <a href="#">تکنیک</a>
+                        {% postcategories1 %}
                       </li>
                     </ul>
                   </div>
-                   -->
                 </div>
               </div>
             </div>
