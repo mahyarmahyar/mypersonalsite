@@ -2,15 +2,18 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 from django.contrib.auth.models import User
+from captcha.fields import CaptchaField
 
 
 class LoginForm(forms.Form):
+    captcha = CaptchaField()
     username_or_email = forms.CharField(
         label='Username or Email', max_length=100)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
 
 class CustomUserCreationForm(UserCreationForm):
+    captcha = CaptchaField()
     email = forms.EmailField(required=True)
 
     class Meta:
@@ -32,11 +35,13 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class CustomPasswordResetForm(PasswordResetForm):
+    captcha = CaptchaField()
     email = forms.EmailField(label='email', max_length=254, widget=forms.EmailInput(
         attrs={'autocomplete': 'email', 'class': 'form-control'}))
 
 
 class CustomSetPasswordForm(SetPasswordForm):
+    captcha = CaptchaField()
     new_password1 = forms.CharField(label='رمز عبور جدید', widget=forms.PasswordInput(
         attrs={'autocomplete': 'new-password', 'class': 'form-control'}), strip=False)
     new_password2 = forms.CharField(label='تکرار رمز عبور جدید', strip=False, widget=forms.PasswordInput(
